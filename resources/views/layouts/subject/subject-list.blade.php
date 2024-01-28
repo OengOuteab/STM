@@ -23,18 +23,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>#123</td>
-      <td>Math</td>
-      <td>2024-21-1</td>
-      <td>0123456789</td>
-      <td>Math</td>
+    @foreach($subject as $subject)
+     <tr>
+      <td>{{$subject->id}}</td>
+      <td>{{$subject->code}}</td>
+      <td>{{$subject->name}}</td>
+      <td>{{$subject->note}}</td>
       <td class="btn-action"> 
-        <a href="#"><span class="text-warning" data-feather="edit"></span>Edit</a>
-        <a href="#"><span class="text-danger" data-feather="trash-2"></span>Delete</a> 
+        <a href="{{url('subject/edit',$subject->id)}}"><span class="text-warning" data-feather="edit"></span>Edit</a>
+        <a href="{{url('subject/show',$subject->id)}}"><span class="text-danger" data-feather="trash-2"></span>Delete</a> 
     </td>
     </tr>
+    @endforeach
+   
     
   </tbody>
 </table>

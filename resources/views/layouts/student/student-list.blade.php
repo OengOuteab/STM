@@ -5,7 +5,7 @@
     <div class="content-title">
         <h3>Subject</h3>
         <div>
-            <button type="button" class="btn btn-outline-primary"> <span data-feather="user-plus"></span> Add</button>
+            <a href="{{url('student/add')}}" class="btn btn-outline-primary"> <span data-feather="user-plus"></span> Add</a>
         </div>
         
     </div>
@@ -19,23 +19,25 @@
           <th>Gender</th>
           <th>DOB</th>
           <th>Phone</th>
-          <th>Subject</th>
+          <th>Subject ID</th>
           <th width="140px"></th>
         </tr>
       </thead>
       <tbody>
+        @foreach($student as $student)
         <tr>
-          <td>1</td>
-          <td>Sok</td>
-          <td>Male</td>
-          <td>2024-21-1</td>
-          <td>0123456789</td>
-          <td>Math</td>
-          <td class="btn-action"> 
-            <a href="#"><span class="text-warning" data-feather="edit"></span>Edit</a>
-            <a href="#"><span class="text-danger" data-feather="trash-2"></span>Delete</a> 
-        </td>
-        </tr>
+          <td>{{$student->id}}</td>
+         <td>{{$student->fullName}}</td>
+         <td>{{$student->gender}}</td>
+         <td>{{$student->dob}}</td>
+         <td>{{$student->phone}}</td>
+         <td>{{$student->subjectId}}</td>
+         <td class="btn-action"> 
+           <a href="{{url('student/edit',$student->id)}}"><span class="text-warning" data-feather="edit"></span>Edit</a>
+           <a href="{{url('student/show',$student->id)}}"><span class="text-danger" data-feather="trash-2"></span>Delete</a> 
+       </td>
+       </tr>
+       @endforeach
         
       </tbody>
     </table>
